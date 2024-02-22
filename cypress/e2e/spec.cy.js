@@ -42,25 +42,25 @@ describe('UI Tests for saucedemo.com', () => {
       }
     };
 
-    // Login with STANDARD_USER
+  
     cy.get('[data-test="username"]').type(CREDENTIALS.STANDARD_USER.username);
     cy.get('[data-test="password"]').type(CREDENTIALS.STANDARD_USER.password);
     cy.get('[data-test="login-button"]').click();
 
-    // Add item to cart
+   
     cy.get('.inventory_item_name').contains('Sauce Labs Backpack').closest('.inventory_item').find('.btn_primary').click();
 
-    // Check that item is added to cart
+
     cy.get('.shopping_cart_badge').should('contain.text', '1');
 
-    // Go to cart
+
     cy.get('.shopping_cart_link').click();
 
-    // Logout
+   
     cy.get('#react-burger-menu-btn').click();
     cy.contains('Logout').click();
 
-    // Check that user is on login page
+
     cy.get('.login_logo').should('be.visible');
   });
 });
